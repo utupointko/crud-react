@@ -18,19 +18,22 @@ const Main = () => {
     }, [])
 
     const like = async (id: number) => {
-        await fetch(`http://localhost:8001/api/products/${id}/like`, {
+        const response = await fetch(`http://localhost:8001/api/products/${id}/like`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'}
         });
+        const data = await response.json();
 
-        setProducts(products.map(
-            (p: Product) => {
-                if (p.id === id) {
-                    p.likes++;
+        if (data["message"] === "success") {
+            setProducts(products.map(
+                (p: Product) => {
+                    if (p.id === id) {
+                        p.likes++;
+                    }
+                    return p;
                 }
-                return p;
-            }
-        ));
+            ));
+        }
     }
 
     return (
