@@ -56,7 +56,7 @@ const Products = () => {
                             return (
                                 <tr key={p.id}>
                                     <td>{p.id}</td>
-                                    <td><img src={p.image} height="180" alt={p.title + "image"}/></td>
+                                    <td><img src={p.image} height="180" alt={p.title + " image"}/></td>
                                     <td>{p.title}</td>
                                     <td>{p.likes}</td>
                                     <td>
